@@ -79,9 +79,7 @@ namespace GraZaDuzoZaMalo.Model
             /// <summary>Status gry ustawiany w momencie odgadnięcia poszukiwanej liczby.</summary>
             Zakonczona,
             /// <summary>Status gry ustawiany w momencie jawnego przerwania gry przez gracza.</summary>
-            Poddana,
-            /// <summary>Status gry ustawiany w momencie chwilowego przerwania gry (zapisu jej stanu do pliku).</summary>
-            Zawieszona
+            Poddana
         };
 
         /// <summary>
@@ -129,22 +127,6 @@ namespace GraZaDuzoZaMalo.Model
         
 
         public Gra() : this(1, 100) { }
-
-        /// <summary>
-        /// Zawies gre (zmien status gry na "zawieszona", przed zapisaniem gry) 
-        /// </summary>
-        public void ZawiesGre()
-        {
-            StatusGry = Status.Zawieszona;
-        }
-        
-        /// <summary>
-        /// Odawies gre (zmien status gry na "w trakcie", po wczytaniu gry) 
-        /// </summary>
-        public void OdwiesGre()
-        {
-            StatusGry = Status.WTrakcie;
-        }
 
 
         /// <summary>

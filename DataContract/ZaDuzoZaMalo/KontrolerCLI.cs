@@ -50,7 +50,6 @@ namespace AppGraZaDuzoZaMaloCLI
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 gra = (Gra) formatter.Deserialize(fs);
-                gra.OdwiesGre();
             }
             catch (SerializationException e)
             {
@@ -118,7 +117,6 @@ namespace AppGraZaDuzoZaMaloCLI
 
             if (gra.StatusGry == Gra.Status.WTrakcie)
             {
-                gra.ZawiesGre();
                 FileStream fs = new FileStream("save.dat", FileMode.Create);
                 BinaryFormatter formatter = new BinaryFormatter();
                 
