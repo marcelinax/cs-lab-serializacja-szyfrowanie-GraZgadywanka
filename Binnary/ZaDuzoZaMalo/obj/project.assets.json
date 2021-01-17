@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Studia\\Programowanie obiektowe - lab\\Serializacja\\ZaDuzoZaMalo\\ZaDuzoZaMalo\\ZaDuzoZaMalo.csproj",
+      "projectUniqueName": "C:\\Users\\Marcelina\\source\\repos\\Projekt\\cs-lab-serializacja-szyfrowanie-GraZgadywanka\\Binnary\\ZaDuzoZaMalo\\ZaDuzoZaMalo.csproj",
       "projectName": "ZaDuzoZaMalo",
-      "projectPath": "D:\\Studia\\Programowanie obiektowe - lab\\Serializacja\\ZaDuzoZaMalo\\ZaDuzoZaMalo\\ZaDuzoZaMalo.csproj",
+      "projectPath": "C:\\Users\\Marcelina\\source\\repos\\Projekt\\cs-lab-serializacja-szyfrowanie-GraZgadywanka\\Binnary\\ZaDuzoZaMalo\\ZaDuzoZaMalo.csproj",
       "packagesPath": "C:\\Users\\Marcelina\\.nuget\\packages\\",
-      "outputPath": "D:\\Studia\\Programowanie obiektowe - lab\\Serializacja\\ZaDuzoZaMalo\\ZaDuzoZaMalo\\obj\\",
+      "outputPath": "C:\\Users\\Marcelina\\source\\repos\\Projekt\\cs-lab-serializacja-szyfrowanie-GraZgadywanka\\Binnary\\ZaDuzoZaMalo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Marcelina\\AppData\\Roaming\\NuGet\\NuGet.Config",
