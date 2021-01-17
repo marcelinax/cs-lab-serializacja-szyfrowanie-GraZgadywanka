@@ -110,6 +110,8 @@ namespace GraZaDuzoZaMalo.Model
         /// </summary>
         public TimeSpan AktualnyCzasGry => DateTime.Now - CzasRozpoczecia;
         public TimeSpan CalkowityCzasGry => (StatusGry == Status.WTrakcie) ? AktualnyCzasGry : (TimeSpan)(CzasZakonczenia - CzasRozpoczecia);
+        
+        
 
         public Gra(int min, int max)
         {

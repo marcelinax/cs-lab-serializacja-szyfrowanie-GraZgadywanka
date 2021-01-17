@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using GraZaDuzoZaMalo.Model;
 using static GraZaDuzoZaMalo.Model.Gra.Odpowiedz;
 
@@ -51,6 +52,7 @@ namespace AppGraZaDuzoZaMaloCLI
                 BinaryFormatter formatter = new BinaryFormatter();
                 gra = (Gra) formatter.Deserialize(fs);
                 gra.OdwiesGre();
+                widok.HistoriaGry();
             }
             catch (SerializationException e)
             {
