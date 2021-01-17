@@ -31,7 +31,7 @@ namespace AppGraZaDuzoZaMaloCLI
                     string value = ReadLine().TrimStart().ToUpper();
                     if (value.Length > 0 && value[0].Equals(ZNAK_ZAKONCZENIA_GRY))
                         throw new KoniecGryException();
-
+                    
                     //UWAGA: ponizej może zostać zgłoszony wyjątek 
                     wynik = Int32.Parse(value);
                     sukces = true;
@@ -40,6 +40,10 @@ namespace AppGraZaDuzoZaMaloCLI
                 {
                     WriteLine("Podana przez Ciebie wartość nie przypomina liczby! Spróbuj raz jeszcze.");
                     continue;
+                }
+                catch (KoniecGryException)
+                {
+                    kontroler.ZakonczGre();
                 }
                 catch (OverflowException)
                 {

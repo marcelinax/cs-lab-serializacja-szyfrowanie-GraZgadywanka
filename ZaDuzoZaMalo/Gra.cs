@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,7 @@ namespace GraZaDuzoZaMalo.Model
     /// Pojedynczy Ruch
     /// </para>
     /// </remarks>
+    [Serializable]
     public class Gra
     {
         /// <summary>
@@ -122,6 +124,7 @@ namespace GraZaDuzoZaMalo.Model
 
             listaRuchow = new List<Ruch>();
         }
+        
 
         public Gra() : this(1, 100) { }
 
@@ -140,6 +143,10 @@ namespace GraZaDuzoZaMalo.Model
                 StatusGry = Status.Zakonczona;
                 CzasZakonczenia = DateTime.Now;
                 listaRuchow.Add(new Ruch(pytanie, odp, Status.Zakonczona));
+                try
+                {
+                    File.Delete("save.dat");
+                } catch {}            
             }
             else if (pytanie < liczbaDoOdgadniecia)
                 odp = Odpowiedz.ZaMalo;
@@ -155,6 +162,7 @@ namespace GraZaDuzoZaMalo.Model
             return odp;
         }
 
+        
         public int Przerwij()
         {
             if (StatusGry == Status.WTrakcie)
@@ -162,12 +170,17 @@ namespace GraZaDuzoZaMalo.Model
                 StatusGry = Status.Poddana;
                 CzasZakonczenia = DateTime.Now;
                 listaRuchow.Add(new Ruch(null, null, Status.WTrakcie));
+                try
+                {
+                    File.Delete("save.dat");
+                } catch {}
             }
 
             return liczbaDoOdgadniecia;
         }
 
 
+        [Serializable]
         // struktury wewnętrzne, pomocnicze
         public enum Odpowiedz
         {
@@ -176,6 +189,7 @@ namespace GraZaDuzoZaMalo.Model
             ZaDuzo = 1
         };
 
+        [Serializable]
         public class Ruch
         {
             public int? Liczba { get; }

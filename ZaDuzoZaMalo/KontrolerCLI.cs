@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using GraZaDuzoZaMalo.Model;
@@ -32,6 +34,7 @@ namespace AppGraZaDuzoZaMaloCLI
 
         public void Uruchom()
         {
+           
             widok.OpisGry();
             while( widok.ChceszKontynuowac("Czy chcesz kontynuować aplikację (t/n)? ") )
                 UruchomRozgrywke();
@@ -41,9 +44,22 @@ namespace AppGraZaDuzoZaMaloCLI
         {
             widok.CzyscEkran();
             // ustaw zakres do losowania
-
-
-            gra = new Gra(MinZakres, MaxZakres); //może zgłosić ArgumentException
+            try {
+            FileStream fs = new FileStream("save.dat", FileMode.Open);
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                gra = (Gra) formatter.Deserialize(fs);
+            }
+            catch (SerializationException e)
+            {
+                gra = new Gra(MinZakres, MaxZakres); //może zgłosić ArgumentException
+            }
+            finally
+            {
+                fs.Close();
+            }
+            } catch { }
 
             do
             {
@@ -98,6 +114,28 @@ namespace AppGraZaDuzoZaMaloCLI
         public void ZakonczGre()
         {
             //np. zapisuje stan gry na dysku w celu późniejszego załadowania
+
+            if (gra.StatusGry == Gra.Status.WTrakcie)
+            {
+                FileStream fs = new FileStream("save.dat", FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                
+                try
+                {
+                    formatter.Serialize(fs, gra);
+                }
+                catch (SerializationException e)
+                {
+                    Console.WriteLine("Failed to serialize game file!\n Reason: " + e.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs.Close();
+                }
+              
+            }
+
             //albo dopisuje wynik do Top Score
             //sprząta pamięć
             gra = null;
